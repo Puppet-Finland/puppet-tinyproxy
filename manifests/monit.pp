@@ -10,6 +10,6 @@ class tinyproxy::monit
 {
     monit::fragment { 'tinyproxy-tinyproxy.monit':
         modulename => 'tinyproxy',
-        basename => 'tinyproxy',
+        basename   => 'tinyproxy',
     }
 }

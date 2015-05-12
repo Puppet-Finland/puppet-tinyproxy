@@ -5,22 +5,25 @@
 #
 class tinyproxy::params {
 
+    include ::os::params
+
     case $::osfamily {
         'Debian': {
             $package_name = 'tinyproxy'
             $config_name = '/etc/tinyproxy.conf'
             $service_name = 'tinyproxy'
-            $service_start = "/usr/sbin/service $service_name start"
-            $service_stop = "/usr/sbin/service $service_name stop"
             $pidfile = '/var/run/tinyproxy/tinyproxy.pid'
         }
         default: {
-            $package_name = 'tinyproxy'
-            $config_name = '/etc/tinyproxy.conf'
-            $service_name = 'tinyproxy'
-            $service_start = "/usr/sbin/service $service_name start"
-            $service_stop = "/usr/sbin/service $service_name stop"
-            $pidfile = '/var/run/tinyproxy/tinyproxy.pid'
+            fail("Unsupported operating system ${::osfamily}")
         }
+    }
+
+    if str2bool($::has_systemd) {
+        $service_start = "${::os::params::systemctl} start ${service_name}"
+        $service_stop = "${::os::params::systemctl} stop ${service_name}"
+    } else {
+        $service_start = "${::os::params::service_cmd} ${service_name} start"
+        $service_stop = "${::os::params::service_cmd} ${service_name} stop"
     }
 }

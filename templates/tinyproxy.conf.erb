@@ -28,7 +28,8 @@ Port <%= port %>
 # interfaces present.
 #
 #Listen 192.168.0.1
-<%= listen_line %>
+<% if @listen_line %><%= listen_line %><% end -%>
+
 
 #
 # Bind: This allows you to specify which interface will be used for
