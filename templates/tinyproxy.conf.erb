@@ -20,7 +20,7 @@ Group nogroup
 # that should you choose to run on a port lower than 1024 you will need
 # to start tinyproxy using root.
 #
-Port <%= port %>
+Port <%= @port %>
 
 #
 # Listen: If you have multiple interfaces this allows you to bind to
@@ -28,7 +28,7 @@ Port <%= port %>
 # interfaces present.
 #
 #Listen 192.168.0.1
-<% if @listen_line %><%= listen_line %><% end -%>
+<% if @listen_line %><%= @listen_line %><% end -%>
 
 
 #
@@ -210,7 +210,7 @@ MaxRequestsPerChild 0
 # tested against the controls based on order.
 #
 Allow 127.0.0.1
-Allow <%= allow_address_ipv4 %>
+Allow <%= @allow_address_ipv4 %>
 #Allow 192.168.0.0/16
 #Allow 172.16.0.0/12
 #Allow 10.0.0.0/8
