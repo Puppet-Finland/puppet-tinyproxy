@@ -8,8 +8,9 @@ class tinyproxy::monit
     $monitor_email
 )
 {
-    monit::fragment { 'tinyproxy-tinyproxy.monit':
+    @monit::fragment { 'tinyproxy-tinyproxy.monit':
         modulename => 'tinyproxy',
         basename   => 'tinyproxy',
+        tag        => 'default',
     }
 }

@@ -19,13 +19,14 @@ class tinyproxy::packetfilter
         default => $allow_address_ipv4,
     }
 
-    firewall { '009 ipv4 accept tinyproxy':
+    @firewall { '009 ipv4 accept tinyproxy':
         provider => 'iptables',
         chain    => 'INPUT',
         proto    => 'tcp',
         source   => $source_v4,
         dport    => $port,
         action   => 'accept',
+        tag      => 'default',
     }
 
     # IPv6 rules
@@ -34,12 +35,13 @@ class tinyproxy::packetfilter
         default => $allow_address_ipv6,
     }
 
-    firewall { '009 ipv6 accept tinyproxy':
+    @firewall { '009 ipv6 accept tinyproxy':
         provider => 'ip6tables',
         chain    => 'INPUT',
         proto    => 'tcp',
         source   => $source_v6,
         dport    => $port,
         action   => 'accept',
+        tag      => 'default',
     }
 }
