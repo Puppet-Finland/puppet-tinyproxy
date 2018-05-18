@@ -1,22 +1,15 @@
 # tinyproxy
 
-A Puppet module for managing tinyproxy
+A Puppet module for managing tinyproxy. Includes optional monit and firewall support. 
 
 # Module usage
 
-* [Class: tinyproxy](manifests/init.pp)
+To setup tinyproxy:
 
-# Dependencies
+    class { '::tinyproxy':
+      listen_address     => '10.170.5.15',
+      port               => '8888',
+      allow_address_ipv4 => '10.0.0.0/8',
+    }
 
-See [metadata.json](metadata.json).
-
-# Operating system support
-
-This module has been tested on
-
-* Ubuntu 12.04 and 14.04
-
-Any *NIX-style operating system should work out of the box or with small 
-modifications.
-
-For details see [params.pp](manifests/params.pp).
+For details see [init.pp](manifests/init.pp).
