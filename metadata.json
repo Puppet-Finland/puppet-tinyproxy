@@ -2,7 +2,7 @@
   "name": "puppetfinland-tinyproxy",
   "version": "1.0.0",
   "author": "Puppet-Finland team",
-  "license": "BSD license",
+  "license": "BSD-2-Clause",
   "summary": "Setup tinyproxy",
   "source": "https://github.com/Puppet-Finland/tinyproxy.git",
   "project_page": "https://github.com/Puppet-Finland/tinyproxy",
